@@ -1,0 +1,308 @@
+[gd_scene load_steps=15 format=3 uid="uid://d1o1rgj6235pr"]
+
+[ext_resource type="Texture2D" uid="uid://chffdowv64773" path="res://assets/images/plus_icon_big.png" id="1_db5cl"]
+[ext_resource type="Script" uid="uid://bx28dexehrpv1" path="res://assets/main_screen.gd" id="1_qdlv5"]
+[ext_resource type="PackedScene" uid="uid://cxixikfpw4g6e" path="res://assets/scenes/person_field.tscn" id="2_2d37k"]
+[ext_resource type="Texture2D" uid="uid://bwl7na5h8hmu6" path="res://assets/images/plus_icon.png" id="2_06ig3"]
+[ext_resource type="Script" uid="uid://2ddof6kkhsx0" path="res://assets/add_tab_view.gd" id="2_836ik"]
+[ext_resource type="Texture2D" uid="uid://ce4v1i4vxuhte" path="res://assets/images/save.png" id="6_qdlv5"]
+[ext_resource type="Texture2D" uid="uid://bd6xff3cga2s2" path="res://assets/images/trash.png" id="6_ujfqy"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_db5cl"]
+color = Color(0.286275, 0.345098, 0.403922, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_db5cl"]
+bg_color = Color(0.968627, 0.968627, 1, 1)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06ig3"]
+draw_center = false
+border_width_bottom = 4
+border_color = Color(0.286275, 0.345098, 0.403922, 1)
+
+[sub_resource type="Animation" id="Animation_qdlv5"]
+resource_name = "show_add_tab_view"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScreenFade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AddTabView:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 1920), Vector2(0, 640)]
+}
+
+[sub_resource type="Animation" id="Animation_tkxyu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AddTabView:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1920)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScreenFade:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fphxj"]
+resource_name = "hide_add_tab_view"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScreenFade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AddTabView:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 640), Vector2(0, 1920)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tkxyu"]
+_data = {
+&"RESET": SubResource("Animation_tkxyu"),
+&"hide_add_tab_view": SubResource("Animation_fphxj"),
+&"show_add_tab_view": SubResource("Animation_qdlv5")
+}
+
+[node name="Main" type="Node"]
+
+[node name="MainScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qdlv5")
+
+[node name="Background" type="ColorRect" parent="MainScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.968627, 0.968627, 1, 1)
+
+[node name="TabListView" type="MarginContainer" parent="MainScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainScreen/TabListView"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OpenTabs" type="Label" parent="MainScreen/TabListView/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "Open Tabs"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainScreen/TabListView/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainScreen/TabListView/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TabName" type="Label" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "Coffee"
+
+[node name="NextToPay" type="Label" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "Daniel"
+
+[node name="HSeparator" type="HSeparator" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxLine_db5cl")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TabName" type="Label" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "Coffee"
+
+[node name="NextToPay" type="Label" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "Daniel"
+
+[node name="AddTab" type="TextureButton" parent="MainScreen/TabListView"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("1_db5cl")
+
+[node name="ScreenFade" type="ColorRect" parent="MainScreen"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.301961)
+
+[node name="AddTabView" type="PanelContainer" parent="MainScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1920.0
+offset_bottom = 1280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_db5cl")
+script = ExtResource("2_836ik")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainScreen/AddTabView"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainScreen/AddTabView/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="MarginContainer" type="MarginContainer" parent="MainScreen/AddTabView/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 256
+
+[node name="NewTabName" type="LineEdit" parent="MainScreen/AddTabView/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_placeholder_color = Color(0.595154, 0.595154, 0.595154, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 76
+theme_override_styles/focus = SubResource("StyleBoxFlat_06ig3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_06ig3")
+placeholder_text = "New Tab"
+max_length = 64
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainScreen/AddTabView/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 128
+
+[node name="PersonFieldList" type="VBoxContainer" parent="MainScreen/AddTabView/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="PersonField" parent="MainScreen/AddTabView/MarginContainer/VBoxContainer/MarginContainer2/PersonFieldList" instance=ExtResource("2_2d37k")]
+layout_mode = 2
+
+[node name="PersonField2" parent="MainScreen/AddTabView/MarginContainer/VBoxContainer/MarginContainer2/PersonFieldList" instance=ExtResource("2_2d37k")]
+layout_mode = 2
+
+[node name="AddPersonField" type="Button" parent="MainScreen/AddTabView/MarginContainer/VBoxContainer/MarginContainer2/PersonFieldList"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+icon = ExtResource("2_06ig3")
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainScreen/AddTabView/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Discard" type="Button" parent="MainScreen/AddTabView/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 8
+focus_mode = 0
+icon = ExtResource("6_ujfqy")
+flat = true
+
+[node name="Submit" type="Button" parent="MainScreen/AddTabView/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+focus_mode = 0
+icon = ExtResource("6_qdlv5")
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainScreen"]
+libraries = {
+&"": SubResource("AnimationLibrary_tkxyu")
+}

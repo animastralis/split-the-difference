@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Datastore" load_steps=3 format=3 uid="uid://b2ke8tvugv5th"]
+
+[ext_resource type="Script" uid="uid://wh3g1jn137bq" path="res://assets/data/datastore.gd" id="1_reebg"]
+[ext_resource type="Script" uid="uid://bjp0hewmrer2p" path="res://assets/data/tab.gd" id="2_p8aal"]
+
+[resource]
+script = ExtResource("1_reebg")
+tab_data = Array[ExtResource("2_p8aal")]([])
+metadata/_custom_type_script = "uid://wh3g1jn137bq"
