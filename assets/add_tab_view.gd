@@ -44,6 +44,7 @@ func _on_submit_button_pressed() -> void:
 	tab_submitted.emit()
 
 
+# Quick and dirty -- delete all fields and add new ones back in.
 func reset_form() -> void:
 	tab_name_field.text = ""
 	person_field_list.remove_child(add_person_field_button)
