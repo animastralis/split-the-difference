@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgb8ja65cugsu"]
+
+[ext_resource type="Script" uid="uid://d4ie2xd2lrwad" path="res://assets/scenes/tab_summary.gd" id="1_efo2s"]
+
+[node name="TabSummary" type="HBoxContainer"]
+theme_override_constants/separation = 64
+script = ExtResource("1_efo2s")
+
+[node name="TabName" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "Coffee"
+
+[node name="NextToPay" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "Daniel"

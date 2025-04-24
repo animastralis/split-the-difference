@@ -1,16 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1o1rgj6235pr"]
+[gd_scene load_steps=16 format=3 uid="uid://d1o1rgj6235pr"]
 
 [ext_resource type="Texture2D" uid="uid://chffdowv64773" path="res://assets/images/plus_icon_big.png" id="1_db5cl"]
 [ext_resource type="Script" uid="uid://bx28dexehrpv1" path="res://assets/main_screen.gd" id="1_qdlv5"]
 [ext_resource type="PackedScene" uid="uid://cxixikfpw4g6e" path="res://assets/scenes/person_field.tscn" id="2_2d37k"]
 [ext_resource type="Texture2D" uid="uid://bwl7na5h8hmu6" path="res://assets/images/plus_icon.png" id="2_06ig3"]
 [ext_resource type="Script" uid="uid://2ddof6kkhsx0" path="res://assets/add_tab_view.gd" id="2_836ik"]
+[ext_resource type="PackedScene" uid="uid://dgb8ja65cugsu" path="res://assets/scenes/tab_summary.tscn" id="2_tkxyu"]
+[ext_resource type="PackedScene" uid="uid://djt37t72t3rua" path="res://assets/scenes/tab_summary_list_separator.tscn" id="3_fphxj"]
 [ext_resource type="Texture2D" uid="uid://ce4v1i4vxuhte" path="res://assets/images/save.png" id="6_qdlv5"]
 [ext_resource type="Texture2D" uid="uid://bd6xff3cga2s2" path="res://assets/images/trash.png" id="6_ujfqy"]
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_db5cl"]
-color = Color(0.286275, 0.345098, 0.403922, 1)
-thickness = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_db5cl"]
 bg_color = Color(0.968627, 0.968627, 1, 1)
@@ -163,44 +161,27 @@ theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainScreen/TabListView/VBoxContainer/MarginContainer"]
+[node name="TabSummaryList" type="VBoxContainer" parent="MainScreen/TabListView/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="TabSummary" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/TabSummaryList" instance=ExtResource("2_tkxyu")]
+layout_mode = 2
+
+[node name="TabSummaryListSeparator" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/TabSummaryList" instance=ExtResource("3_fphxj")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/TabSummaryList"]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="TabName" type="Label" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TabName" type="Label" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/TabSummaryList/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 72
 text = "Coffee"
 
-[node name="NextToPay" type="Label" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 72
-text = "Daniel"
-
-[node name="HSeparator" type="HSeparator" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-theme_override_styles/separator = SubResource("StyleBoxLine_db5cl")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 64
-
-[node name="TabName" type="Label" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 72
-text = "Coffee"
-
-[node name="NextToPay" type="Label" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="NextToPay" type="Label" parent="MainScreen/TabListView/VBoxContainer/MarginContainer/TabSummaryList/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -251,7 +232,7 @@ theme_override_constants/separation = 64
 layout_mode = 2
 theme_override_constants/margin_right = 256
 
-[node name="NewTabName" type="LineEdit" parent="MainScreen/AddTabView/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="TabName" type="LineEdit" parent="MainScreen/AddTabView/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_placeholder_color = Color(0.595154, 0.595154, 0.595154, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)

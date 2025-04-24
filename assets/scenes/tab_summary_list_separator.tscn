@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://djt37t72t3rua"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_db5cl"]
+color = Color(0.286275, 0.345098, 0.403922, 1)
+thickness = 4
+
+[node name="TabSummaryListSeparator" type="HSeparator"]
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxLine_db5cl")

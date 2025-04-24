@@ -11,7 +11,7 @@
 color = Color(0.286275, 0.345098, 0.403922, 1)
 thickness = 2
 
-[node name="PersonField" type="HBoxContainer"]
+[node name="PersonField" type="HBoxContainer" groups=["fields"]]
 script = ExtResource("1_4rou7")
 
 [node name="Delete" type="Button" parent="."]
