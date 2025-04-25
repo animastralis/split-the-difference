@@ -3,22 +3,17 @@ class_name Purchase
 extends Resource
 
 ## Unix integer timestamp
-var timestamp: float
+@export var timestamp: float
 
 ## Person who paid for the Purchase.
-var purchaser: Person
+@export var purchaser: Person
 
 ## Total cost of Purchase's Orders.
-var cost: float
+@export var cost: float
 
 ## Dictionary of individual Persons' Orders.
-var orders: Dictionary[String, Order]
+@export var orders: Dictionary
 
 
-## An individual Person's purchased item.
-##
-## A collection of Orders makes up a Purchase.
-class Order:
-	var person: Person
-	var item: String
-	var cost: float
+func _init() -> void:
+	resource_local_to_scene = false

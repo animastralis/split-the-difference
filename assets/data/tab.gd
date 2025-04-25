@@ -11,4 +11,8 @@ extends Resource
 @export var purchases: Array[Purchase]
 
 ## The person most indebted to others on this Tab.
-var next_purchaser: Person
+@export var next_purchaser: Person
+
+
+func _init() -> void:
+	resource_local_to_scene = false

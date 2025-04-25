@@ -13,4 +13,8 @@ extends Resource
 ## The amount of money a Person owes or is owed on the Tab.
 ## Positive -- is owed money
 ## Negative -- owes money
-var balance: float = 0.0
+@export var balance: float
+
+
+func _init() -> void:
+	resource_local_to_scene = false

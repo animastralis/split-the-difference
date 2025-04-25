@@ -36,10 +36,10 @@ func _on_cancel_button_pressed() -> void:
 
 
 func _on_submit_button_pressed() -> void:
-	var orders: Dictionary[String, Purchase.Order] = {}
+	var orders: Dictionary[String, Order] = {}
 	var total_cost := 0.0
 	for line in input_fields.get_children():
-		var order: Purchase.Order = line.get_order()
+		var order: Order = line.get_order()
 		orders[order.person.name] = order
 		total_cost += order.cost
 	
@@ -60,7 +60,7 @@ func _on_autofill_button_pressed() -> void:
 	
 	var prev_purchase := tab.purchases[-1]
 	for line in input_fields.get_children():
-		var prev_order: Purchase.Order = prev_purchase.orders[line.person.name]
+		var prev_order: Order = prev_purchase.orders[line.person.name]
 		line.autofill(prev_order)
 
 

@@ -18,13 +18,13 @@ func clear() -> void:
 	order_name_field.text = ""
 
 
-func autofill(order: Purchase.Order) -> void:
+func autofill(order: Order) -> void:
 	price_field.text = str(order.cost)
 	order_name_field.text = order.item
 
 
-func get_order() -> Purchase.Order:
-	var order := Purchase.Order.new()
+func get_order() -> Order:
+	var order := Order.new()
 	order.person = person
 	order.cost = float(price_field.text)
 	order.item = order_name_field.text

@@ -3,29 +3,55 @@
 ## Saves, loads, and provides the data for other nodes to reference.
 extends Node
 
+const DATASTORE_SAVE_PATH := "user://datastore.tres"
 const SAMPLE_TAB_PATH := "res://assets/data/sample_data/coffee_tab.tres"
 
 var datastore: Datastore
 
 func _ready() -> void:
 	# TODO: Load datastore from disk
-	datastore = Datastore.new()
-	var sample_tab := _load_sample_tab()
-	datastore.tabs.append(sample_tab)
+	load_datastore()
 
 
 func _load_sample_tab() -> Tab:
-	var tab := load(SAMPLE_TAB_PATH)
+	var tab := Tab.new()
+	var sample_tab := load(SAMPLE_TAB_PATH)
+	
+	tab.name = sample_tab.name
+	
+	tab.members = []
+	for p in sample_tab.members:
+		var person: Person = p.duplicate()
+		tab.members.append(person)
+	
+	tab.purchases = []
+	for p in sample_tab.purchases:
+		var purchase: Purchase = p.duplicate()
+		tab.purchases.append(purchase)
+	
 	tab.next_purchaser = tab.members[0]
-	
-	# Purchases
-	#for p in ex_persons:
-		#var order := Purchase.Order.new()
-		#order.person = p
-		#order.item = "Coffee"
-		#order.cost =
-	
 	return tab
+
+
+func save_datastore() -> void:
+	var err := ResourceSaver.save(datastore, DATASTORE_SAVE_PATH, ResourceSaver.FLAG_REPLACE_SUBRESOURCE_PATHS)
+	if err == OK:
+		print("Saved datastore to: ", DATASTORE_SAVE_PATH)
+	else:
+		print("ERROR: Failed to save datstore: ", err)
+
+
+func load_datastore() -> void:
+	var data: Datastore = ResourceLoader.load(DATASTORE_SAVE_PATH)
+	if data:
+		print("Loaded datstore from ", DATASTORE_SAVE_PATH)
+		datastore = data
+	else:
+		print("Failed to load datastore. Creating new datastore.")
+		datastore = Datastore.new()
+		var sample_tab := _load_sample_tab()
+		datastore.tabs.append(sample_tab)
+		save_datastore()
 
 
 func add_tab(tab_name: String, member_names: Array[String]) -> void:
@@ -41,25 +67,29 @@ func add_tab(tab_name: String, member_names: Array[String]) -> void:
 	
 	tab.next_purchaser = tab.members[0]
 	datastore.tabs.append(tab)
+	save_datastore()
 
 
 func add_purchase_to_tab(tab: Tab, purchase: Purchase) -> void:
-	for t in datastore.tabs:
+	for i in datastore.tabs.size():
+		var t := datastore.tabs[i]
 		if t.name == tab.name:
 			t.purchases.append(purchase)
+			
+			# Subtract individual cost from each Person's balance if they didn't pay.
+			for person in t.members:
+				person.balance -= purchase.orders[person.name].cost
+				if person.name == purchase.purchaser.name:
+					person.balance += purchase.cost
 	
-	# Subtract individual cost from each Person's balance if they didn't pay.
-	for person in tab.members:
-		person.balance -= purchase.orders[person.name].cost
-		if person.name == purchase.purchaser.name:
-			person.balance += purchase.cost
+			t.members.sort_custom(
+				func(a: Person, b: Person):
+					return a.balance < b.balance
+			)
 	
-	tab.members.sort_custom(
-		func(a: Person, b: Person):
-			return a.balance < b.balance
-	)
-	
-	tab.next_purchaser = tab.members[0]
+			t.next_purchaser = t.members[0]
+			save_datastore()
+			return
 
 
 func get_tab_by_name(tab_name: String) -> Tab:
@@ -67,4 +97,4 @@ func get_tab_by_name(tab_name: String) -> Tab:
 		if tab.name == tab_name:
 			return tab
 	
-	return Tab.new()
+	return null
