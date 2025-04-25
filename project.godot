@@ -13,7 +13,8 @@ config_version=5
 config/name="SplitTheDifference"
 run/main_scene="uid://d1o1rgj6235pr"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+run/low_processor_mode=true
+config/icon="uid://caeosajm5ufx"
 
 [autoload]
 
@@ -28,6 +29,10 @@ window/size/initial_screen=1
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[gui]
+
+theme/custom_font="uid://sx1ohwfvpp7o"
 
 [rendering]
 

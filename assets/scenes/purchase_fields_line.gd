@@ -4,7 +4,7 @@ extends HBoxContainer
 var person: Person
 
 @onready var person_name_label := $PersonName
-@onready var price_field := $Price
+@onready var price_field := $HBoxContainer/Price
 @onready var order_name_field := $OrderName
 
 

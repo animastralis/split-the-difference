@@ -13,29 +13,35 @@ border_width_bottom = 2
 border_color = Color(0.286275, 0.345098, 0.403922, 1)
 
 [node name="PurchaseFieldsLine" type="HBoxContainer"]
+theme_override_constants/separation = 48
 script = ExtResource("1_r5one")
 
 [node name="PersonName" type="Label" parent="."]
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
 theme_override_font_sizes/font_size = 48
 text = "Jennifer"
 
-[node name="DollarSign" type="Label" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="DollarSign" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
 theme_override_font_sizes/font_size = 48
 text = "$"
 
-[node name="Price" type="LineEdit" parent="."]
+[node name="Price" type="LineEdit" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_stretch_ratio = 2.0
 theme_override_colors/font_placeholder_color = Color(0.596078, 0.596078, 0.596078, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
 theme_override_font_sizes/font_size = 48
 theme_override_styles/focus = SubResource("StyleBoxFlat_mckc1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mckc1")
@@ -47,7 +53,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme_override_colors/font_placeholder_color = Color(0.596078, 0.596078, 0.596078, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_mckc1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmib0")

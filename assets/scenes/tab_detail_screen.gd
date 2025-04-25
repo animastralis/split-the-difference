@@ -7,6 +7,7 @@ const SEPARATOR := preload("res://assets/scenes/tab_summary_list_separator.tscn"
 
 @onready var add_purchase_button := $TabDetailView/AddPurchase
 @onready var add_purchase_view: AddPurchaseView = $AddPurchaseView
+@onready var tab_name_label := $TabDetailView/VBoxContainer/HBoxContainer/TabName
 @onready var anim := $AnimationPlayer
 @onready var member_list := $TabDetailView/VBoxContainer/MemberContainer/MemberList
 @onready var history_list := $TabDetailView/VBoxContainer/HistoryContainer/HistoryList
@@ -26,21 +27,18 @@ func init(tab_: Tab) -> void:
 	tab = tab_
 	
 	# Tab Members
-	var counter := len(tab.members) - 1
 	for p in tab.members:
 		var item := TAB_MEMBER_ITEM.instantiate()
 		member_list.add_child(item)
 		item.init(p.name, p.balance)
 		
-		if counter > 0:
-			var separator := SEPARATOR.instantiate()
-			member_list.add_child(separator)
-			counter -= 1
+		var separator := SEPARATOR.instantiate()
+		member_list.add_child(separator)
 	
 	# Recent Purchases
 	var recent_purchases := tab.purchases.duplicate()
 	recent_purchases.reverse()
-	counter = 3
+	var counter := 3
 	for p in recent_purchases:
 		var line: PurchaseHistoryLine = PURCHASE_HISTORY_LINE.instantiate()
 		history_list.add_child(line)
@@ -51,6 +49,7 @@ func init(tab_: Tab) -> void:
 		elif counter <= 0:
 			break
 	
+	tab_name_label.text = tab.name
 	add_purchase_view.init(tab)
 	anim.play("RESET")
 

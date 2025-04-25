@@ -1,13 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk7f4i4b7crvk"]
+[gd_scene load_steps=3 format=3 uid="uid://dk7f4i4b7crvk"]
 
 [ext_resource type="Script" uid="uid://cuml83ar0p4aw" path="res://assets/scenes/tab_member_item.gd" id="1_snhla"]
+[ext_resource type="FontFile" uid="uid://c2wp4ubm4evf0" path="res://assets/fonts/fira-sans/FiraSans-Book.ttf" id="2_ygung"]
 
 [node name="TabMemberItem" type="HBoxContainer"]
 script = ExtResource("1_snhla")
 
 [node name="MemberName" type="Label" parent="."]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
+theme_override_fonts/font = ExtResource("2_ygung")
 theme_override_font_sizes/font_size = 48
 text = "Person's Name"
 
@@ -15,5 +17,6 @@ text = "Person's Name"
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_colors/font_color = Color(0.356863, 0.54902, 0.352941, 1)
+theme_override_fonts/font = ExtResource("2_ygung")
 theme_override_font_sizes/font_size = 48
 text = "$20.00"

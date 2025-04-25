@@ -15,5 +15,5 @@ func init(member_name: String, member_balance: float) -> void:
 		member_balance_label.text = "$" + str(member_balance)
 		member_balance_label.add_theme_color_override("font_color", POSITIVE)
 	else:
-		member_balance_label.text = "-$" + str(member_balance)
+		member_balance_label.text = "-$" + str(abs(member_balance))
 		member_balance_label.add_theme_color_override("font_color", NEGATIVE)

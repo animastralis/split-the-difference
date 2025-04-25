@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfwx3dn2y3sd5"]
+[gd_scene load_steps=14 format=3 uid="uid://cfwx3dn2y3sd5"]
 
 [ext_resource type="Script" uid="uid://bx28dexehrpv1" path="res://assets/main_screen.gd" id="1_osmlc"]
 [ext_resource type="PackedScene" uid="uid://dgb8ja65cugsu" path="res://assets/scenes/tab_summary.tscn" id="2_4h45y"]
+[ext_resource type="FontFile" uid="uid://mtx47crftaw1" path="res://assets/fonts/fira-sans/FiraSans-Italic.ttf" id="2_xkehw"]
 [ext_resource type="PackedScene" uid="uid://djt37t72t3rua" path="res://assets/scenes/tab_summary_list_separator.tscn" id="3_xkehw"]
 [ext_resource type="StyleBox" uid="uid://bl8q0bl6p5l3o" path="res://assets/form_panel_stylebox.tres" id="4_2nm68"]
 [ext_resource type="Script" uid="uid://2ddof6kkhsx0" path="res://assets/add_tab_view.gd" id="5_wwhf1"]
@@ -121,7 +122,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.968627, 0.968627, 1, 1)
+color = Color(0.992157, 1, 0.968627, 1)
 
 [node name="TabListView" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -138,21 +139,30 @@ theme_override_constants/margin_bottom = 32
 [node name="VBoxContainer" type="VBoxContainer" parent="TabListView"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 32
 
-[node name="OpenTabs" type="Label" parent="TabListView/VBoxContainer"]
+[node name="Title" type="Label" parent="TabListView/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 96
-text = "Open Tabs"
+theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
+theme_override_fonts/font = ExtResource("2_xkehw")
+theme_override_font_sizes/font_size = 112
+text = "Split The Difference"
 
 [node name="MarginContainer" type="MarginContainer" parent="TabListView/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 32
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 64
 
 [node name="TabSummaryList" type="VBoxContainer" parent="TabListView/VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="OpenTabs" type="Label" parent="TabListView/VBoxContainer/MarginContainer/TabSummaryList"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
+theme_override_font_sizes/font_size = 96
+text = "Open Tabs"
 
 [node name="TabSummary" parent="TabListView/VBoxContainer/MarginContainer/TabSummaryList" instance=ExtResource("2_4h45y")]
 layout_mode = 2
@@ -231,7 +241,7 @@ theme_override_constants/margin_right = 256
 [node name="TabName" type="LineEdit" parent="AddTabView/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_placeholder_color = Color(0.595154, 0.595154, 0.595154, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
 theme_override_font_sizes/font_size = 76
 theme_override_styles/focus = SubResource("StyleBoxFlat_06ig3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_06ig3")

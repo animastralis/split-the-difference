@@ -33,15 +33,13 @@ func _on_tab_view_tab_discarded() -> void:
 
 func _load_tabs() -> void:
 	for child in tab_summary_list.get_children():
-		child.queue_free()
+		if child.name != "OpenTabs":
+			child.queue_free()
 	
 	# FIXME: Decouple
 	var num_tabs := len(DataManager.datastore.tabs)
-	var counter := 0
 	for tab in DataManager.datastore.tabs:
 		var tab_summary: TabSummary = TAB_SUMMARY.instantiate()
 		tab_summary_list.add_child(tab_summary)
 		tab_summary.tab = tab
-		
-		if counter < num_tabs - 1:
-			tab_summary_list.add_child(TAB_SUMMARY_LIST_SEPARATOR.instantiate())
+		tab_summary_list.add_child(TAB_SUMMARY_LIST_SEPARATOR.instantiate())
