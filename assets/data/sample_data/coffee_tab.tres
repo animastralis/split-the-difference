@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Tab" load_steps=11 format=3 uid="uid://bbfijqrtm42dh"]
+
+[ext_resource type="Script" uid="uid://dni58jj4aairh" path="res://assets/data/person.gd" id="1_j2dtd"]
+[ext_resource type="Resource" uid="uid://hcd3ctvkjbtn" path="res://assets/data/sample_data/alex.tres" id="2_bvqbm"]
+[ext_resource type="Script" uid="uid://ci5psw0n42gb7" path="res://assets/data/purchase.gd" id="2_obm3w"]
+[ext_resource type="Script" uid="uid://bjp0hewmrer2p" path="res://assets/data/tab.gd" id="3_ct0er"]
+[ext_resource type="Resource" uid="uid://cquntx53ggpf8" path="res://assets/data/sample_data/bob.tres" id="3_ngqqs"]
+[ext_resource type="Resource" uid="uid://cheqexqtebxj3" path="res://assets/data/sample_data/chris.tres" id="4_tyeuk"]
+[ext_resource type="Resource" uid="uid://srhng3da8nl8" path="res://assets/data/sample_data/danielle.tres" id="5_l7hmu"]
+[ext_resource type="Resource" uid="uid://cvu1dts65hrjd" path="res://assets/data/sample_data/eddie.tres" id="6_5x1wy"]
+[ext_resource type="Resource" uid="uid://ck8o1i868w55" path="res://assets/data/sample_data/frankie.tres" id="7_ldxx0"]
+[ext_resource type="Resource" uid="uid://5r258rhknffi" path="res://assets/data/sample_data/jim.tres" id="8_f215l"]
+
+[resource]
+script = ExtResource("3_ct0er")
+name = "Coffee"
+members = Array[ExtResource("1_j2dtd")]([ExtResource("2_bvqbm"), ExtResource("3_ngqqs"), ExtResource("4_tyeuk"), ExtResource("5_l7hmu"), ExtResource("6_5x1wy"), ExtResource("7_ldxx0"), ExtResource("8_f215l")])
+purchases = Array[ExtResource("2_obm3w")]([])
+metadata/_custom_type_script = "uid://bjp0hewmrer2p"

@@ -108,4 +108,4 @@ func _update_view() -> void:
 		elif counter <= 0:
 			break
 	
-	add_purchase_view.init(tab)
+	add_purchase_view.reset(tab)

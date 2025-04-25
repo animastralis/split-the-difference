@@ -13,6 +13,16 @@ func init(person_: Person) -> void:
 	person_name_label.text = person.name
 
 
+func clear() -> void:
+	price_field.text = ""
+	order_name_field.text = ""
+
+
+func autofill(order: Purchase.Order) -> void:
+	price_field.text = str(order.cost)
+	order_name_field.text = order.item
+
+
 func get_order() -> Purchase.Order:
 	var order := Purchase.Order.new()
 	order.person = person

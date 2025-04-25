@@ -3,27 +3,20 @@
 ## Saves, loads, and provides the data for other nodes to reference.
 extends Node
 
+const SAMPLE_TAB_PATH := "res://assets/data/sample_data/coffee_tab.tres"
+
 var datastore: Datastore
 
 func _ready() -> void:
 	# TODO: Load datastore from disk
 	datastore = Datastore.new()
-	var example_tab := _create_example_tab()
-	datastore.tabs.append(example_tab)
+	var sample_tab := _load_sample_tab()
+	datastore.tabs.append(sample_tab)
 
 
-func _create_example_tab() -> Tab:
-	var tab := Tab.new()
-	tab.name = "Coffee"
-	
-	# Members
-	var ex_persons: Array[Person] = []
-	for n in ["Bob", "Jim", "Mary", "David", "Sarah", "Alex", "Elizabeth"]:
-		var person := Person.new()
-		person.name = n
-		person.balance = 0.0
-		ex_persons.append(person)
-	tab.members = ex_persons
+func _load_sample_tab() -> Tab:
+	var tab := load(SAMPLE_TAB_PATH)
+	tab.next_purchaser = tab.members[0]
 	
 	# Purchases
 	#for p in ex_persons:

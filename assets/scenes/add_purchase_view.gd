@@ -20,11 +20,15 @@ var tab: Tab
 func _ready() -> void:
 	cancel_button.pressed.connect(_on_cancel_button_pressed)
 	submit_button.pressed.connect(_on_submit_button_pressed)
+	autofill_button.pressed.connect(_on_autofill_button_pressed)
 
 
 func init(tab_: Tab) -> void:
 	tab = tab_
-	reset(tab)
+	for person in tab.members:
+		var line := PURCHASE_FIELDS_LINE.instantiate()
+		input_fields.add_child(line)
+		line.init(person)
 
 
 func _on_cancel_button_pressed() -> void:
@@ -49,12 +53,20 @@ func _on_submit_button_pressed() -> void:
 	purchase_submitted.emit()
 
 
-func reset(tab_: Tab) -> void:
-	if len(input_fields.get_children()) > 0:
-		for child in input_fields.get_children():
-			child.queue_free()
+func _on_autofill_button_pressed() -> void:
+	# This shouldn't be possible but just in case
+	if len(tab.purchases) == 0:
+		return
 	
-	for person in tab_.members:
-		var line: PurchaseFieldsLine = PURCHASE_FIELDS_LINE.instantiate()
-		input_fields.add_child(line)
-		line.init(person)
+	var prev_purchase := tab.purchases[-1]
+	for line in input_fields.get_children():
+		var prev_order: Purchase.Order = prev_purchase.orders[line.person.name]
+		line.autofill(prev_order)
+
+
+func reset(tab_: Tab) -> void:
+	for line in input_fields.get_children():
+		line.clear()
+	
+	# Disable autofill button if there are no purchases to autofill from.
+	autofill_button.disabled = len(tab.purchases) == 0

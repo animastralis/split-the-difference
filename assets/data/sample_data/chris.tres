@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Person" load_steps=2 format=3 uid="uid://cheqexqtebxj3"]
+
+[ext_resource type="Script" uid="uid://dni58jj4aairh" path="res://assets/data/person.gd" id="1_ls4p1"]
+
+[resource]
+script = ExtResource("1_ls4p1")
+name = "Chris"
+metadata/_custom_type_script = "uid://dni58jj4aairh"
