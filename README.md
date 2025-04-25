@@ -4,6 +4,8 @@ A simple cost-sharing app meant for mobile. Keep running tabs with your friends 
 
 Use running tabs to keep track of a group's shared spending. Whether it's your coworkers' daily coffee runs or your weekly trips to the bar with friends, you'll know at a glance whose turn it is to pay.
 
+![Tab Detail View](assets/images/screenshots/tab-view.png)
+
 ## What does this do?
 - Create "Tabs" for different groups of people.
 - Add group purchases to your Tab. After the first one, the app will show you who owes the group and how much they owe for next time.
