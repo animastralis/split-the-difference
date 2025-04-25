@@ -19,7 +19,7 @@ This is currently an MVP, but more exciting features could be added in the futur
 Further afield, this app could be expanded to track the same people across different Tabs, or store your data in the cloud so you have it on all your devices. Even better, you could share a tab with other users!
 
 ## How'd you make this?
-I used the marvelously free, open-source Godot game engine. Everything was made by me, excluding fonts [shoutout to the Mozilla Foundation at 1001fonts.org](https://www.1001fonts.com/fira-sans-font.html).
+I used the marvelously free, open-source Godot game engine. Everything was made by me, excluding fonts -- shoutout to the Mozilla Foundation at [1001fonts.org](https://www.1001fonts.com/fira-sans-font.html).
 
 ## How can I give this a try?
 While this is designed for mobile use, getting an app on the Apple Store takes some time! In the meantime, you can download and run this on Windows by checking out the latest release.
