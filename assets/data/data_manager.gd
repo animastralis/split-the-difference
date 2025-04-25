@@ -1,6 +1,8 @@
 ## A Singleton that holds Tab data.
 ##
 ## Saves, loads, and provides the data for other nodes to reference.
+## Also processes updates to data, including calculating Tab members' balances.
+## and determining who will pay next.
 extends Node
 
 const DATASTORE_SAVE_PATH := "user://datastore.tres"
@@ -9,7 +11,6 @@ const SAMPLE_TAB_PATH := "res://assets/data/sample_data/coffee_tab.tres"
 var datastore: Datastore
 
 func _ready() -> void:
-	# TODO: Load datastore from disk
 	load_datastore()
 
 
@@ -84,6 +85,7 @@ func add_purchase_to_tab(tab: Tab, purchase: Purchase) -> void:
 				if person.name == purchase.purchaser.name:
 					person.balance += purchase.cost
 	
+			# Sort members by balance so Person who owes most is in front.
 			t.members.sort_custom(
 				func(a: Person, b: Person):
 					return a.balance < b.balance
@@ -92,6 +94,10 @@ func add_purchase_to_tab(tab: Tab, purchase: Purchase) -> void:
 			t.next_purchaser = t.members[0]
 			save_datastore()
 			return
+
+
+func get_tabs() -> Array[Tab]:
+	return datastore.tabs
 
 
 func get_tab_by_name(tab_name: String) -> Tab:

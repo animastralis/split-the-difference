@@ -4,7 +4,7 @@ extends PanelContainer
 signal tab_submitted
 signal tab_discarded
 
-const PERSON_FIELD := preload("res://assets/scenes/person_field.tscn")
+const PERSON_FIELD := preload("res://assets/scenes/main_screen/person_field.tscn")
 
 @onready var tab_name_field := $MarginContainer/VBoxContainer/MarginContainer/TabName
 @onready var person_field_list := $MarginContainer/VBoxContainer/MarginContainer2/PersonFieldList

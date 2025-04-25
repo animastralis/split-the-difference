@@ -1,13 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfwx3dn2y3sd5"]
+[gd_scene load_steps=15 format=3 uid="uid://cfwx3dn2y3sd5"]
 
-[ext_resource type="Script" uid="uid://bx28dexehrpv1" path="res://assets/main_screen.gd" id="1_osmlc"]
-[ext_resource type="PackedScene" uid="uid://dgb8ja65cugsu" path="res://assets/scenes/tab_summary.tscn" id="2_4h45y"]
-[ext_resource type="FontFile" uid="uid://mtx47crftaw1" path="res://assets/fonts/fira-sans/FiraSans-Italic.ttf" id="2_xkehw"]
-[ext_resource type="PackedScene" uid="uid://djt37t72t3rua" path="res://assets/scenes/tab_summary_list_separator.tscn" id="3_xkehw"]
-[ext_resource type="StyleBox" uid="uid://bl8q0bl6p5l3o" path="res://assets/form_panel_stylebox.tres" id="4_2nm68"]
-[ext_resource type="Script" uid="uid://2ddof6kkhsx0" path="res://assets/add_tab_view.gd" id="5_wwhf1"]
-[ext_resource type="PackedScene" uid="uid://cxixikfpw4g6e" path="res://assets/scenes/person_field.tscn" id="6_lict1"]
-[ext_resource type="Texture2D" uid="uid://bwl7na5h8hmu6" path="res://assets/images/plus_icon.png" id="7_jfd6n"]
+[ext_resource type="Script" uid="uid://bx28dexehrpv1" path="res://assets/scenes/main_screen/main_screen.gd" id="1_phq5u"]
+[ext_resource type="FontFile" uid="uid://mtx47crftaw1" path="res://assets/fonts/fira-sans/FiraSans-Italic.ttf" id="2_u3dpa"]
+[ext_resource type="PackedScene" uid="uid://dgb8ja65cugsu" path="res://assets/scenes/main_screen/tab_summary.tscn" id="3_k8knj"]
+[ext_resource type="PackedScene" uid="uid://djt37t72t3rua" path="res://assets/shared/list_separator.tscn" id="4_s0g3s"]
+[ext_resource type="StyleBox" uid="uid://bl8q0bl6p5l3o" path="res://assets/styles/form_panel_stylebox.tres" id="5_3n1wt"]
+[ext_resource type="Script" uid="uid://2ddof6kkhsx0" path="res://assets/scenes/main_screen/add_tab_view.gd" id="6_j6yps"]
+[ext_resource type="PackedScene" uid="uid://cxixikfpw4g6e" path="res://assets/scenes/main_screen/person_field.tscn" id="7_l2yyp"]
+[ext_resource type="Texture2D" uid="uid://bwl7na5h8hmu6" path="res://assets/images/plus_icon.png" id="8_0o1b1"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_phq5u"]
+color = Color(0.286275, 0.345098, 0.403922, 1)
+thickness = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06ig3"]
 draw_center = false
@@ -113,7 +117,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_osmlc")
+script = ExtResource("1_phq5u")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -139,24 +143,28 @@ theme_override_constants/margin_bottom = 32
 [node name="VBoxContainer" type="VBoxContainer" parent="TabListView"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 32
 
 [node name="Title" type="Label" parent="TabListView/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
-theme_override_fonts/font = ExtResource("2_xkehw")
+theme_override_fonts/font = ExtResource("2_u3dpa")
 theme_override_font_sizes/font_size = 112
 text = "Split The Difference"
+
+[node name="ListSeparator" type="HSeparator" parent="TabListView/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxLine_phq5u")
 
 [node name="MarginContainer" type="MarginContainer" parent="TabListView/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 
 [node name="TabSummaryList" type="VBoxContainer" parent="TabListView/VBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 24
 
 [node name="OpenTabs" type="Label" parent="TabListView/VBoxContainer/MarginContainer/TabSummaryList"]
 layout_mode = 2
@@ -164,10 +172,10 @@ theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
 theme_override_font_sizes/font_size = 96
 text = "Open Tabs"
 
-[node name="TabSummary" parent="TabListView/VBoxContainer/MarginContainer/TabSummaryList" instance=ExtResource("2_4h45y")]
+[node name="TabSummary" parent="TabListView/VBoxContainer/MarginContainer/TabSummaryList" instance=ExtResource("3_k8knj")]
 layout_mode = 2
 
-[node name="TabSummaryListSeparator" parent="TabListView/VBoxContainer/MarginContainer/TabSummaryList" instance=ExtResource("3_xkehw")]
+[node name="TabSummaryListSeparator" parent="TabListView/VBoxContainer/MarginContainer/TabSummaryList" instance=ExtResource("4_s0g3s")]
 layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabListView/VBoxContainer/MarginContainer/TabSummaryList"]
@@ -220,8 +228,8 @@ offset_top = 1920.0
 offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("4_2nm68")
-script = ExtResource("5_wwhf1")
+theme_override_styles/panel = ExtResource("5_3n1wt")
+script = ExtResource("6_j6yps")
 
 [node name="MarginContainer" type="MarginContainer" parent="AddTabView"]
 layout_mode = 2
@@ -256,17 +264,17 @@ theme_override_constants/margin_right = 128
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="PersonField" parent="AddTabView/MarginContainer/VBoxContainer/MarginContainer2/PersonFieldList" instance=ExtResource("6_lict1")]
+[node name="PersonField" parent="AddTabView/MarginContainer/VBoxContainer/MarginContainer2/PersonFieldList" instance=ExtResource("7_l2yyp")]
 layout_mode = 2
 
-[node name="PersonField2" parent="AddTabView/MarginContainer/VBoxContainer/MarginContainer2/PersonFieldList" instance=ExtResource("6_lict1")]
+[node name="PersonField2" parent="AddTabView/MarginContainer/VBoxContainer/MarginContainer2/PersonFieldList" instance=ExtResource("7_l2yyp")]
 layout_mode = 2
 
 [node name="AddPersonField" type="Button" parent="AddTabView/MarginContainer/VBoxContainer/MarginContainer2/PersonFieldList"]
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-icon = ExtResource("7_jfd6n")
+icon = ExtResource("8_0o1b1")
 flat = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="AddTabView/MarginContainer"]

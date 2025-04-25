@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dk7f4i4b7crvk"]
 
-[ext_resource type="Script" uid="uid://cuml83ar0p4aw" path="res://assets/scenes/tab_member_item.gd" id="1_snhla"]
+[ext_resource type="Script" uid="uid://cuml83ar0p4aw" path="res://assets/scenes/tab_detail_screen/tab_member_item.gd" id="1_snhla"]
 [ext_resource type="FontFile" uid="uid://c2wp4ubm4evf0" path="res://assets/fonts/fira-sans/FiraSans-Book.ttf" id="2_ygung"]
 
 [node name="TabMemberItem" type="HBoxContainer"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://daia7sny6rbp7"]
 
-[ext_resource type="Script" uid="uid://b0ensi4x5sad6" path="res://assets/scenes/purchase_history_line.gd" id="1_beq0l"]
+[ext_resource type="Script" uid="uid://b0ensi4x5sad6" path="res://assets/scenes/tab_detail_screen/purchase_history_line.gd" id="1_beq0l"]
 [ext_resource type="FontFile" uid="uid://dnt7dt3hbuk37" path="res://assets/fonts/fira-sans/FiraSans-Light.ttf" id="2_sb8ox"]
 
 [node name="PurchaseHistoryLine" type="HBoxContainer"]

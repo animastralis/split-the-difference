@@ -1,7 +1,7 @@
 extends Node
 
-const MAIN_SCREEN := preload("res://assets/scenes/main_screen.tscn")
-const TAB_DETAIL_SCREEN := preload("res://assets/scenes/tab_detail_screen.tscn")
+const MAIN_SCREEN := preload("res://assets/scenes/main_screen/main_screen.tscn")
+const TAB_DETAIL_SCREEN := preload("res://assets/scenes/tab_detail_screen/tab_detail_screen.tscn")
 
 var current_scene: Control
 

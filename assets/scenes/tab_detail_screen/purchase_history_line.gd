@@ -7,6 +7,7 @@ extends HBoxContainer
 
 
 func init(purchase: Purchase) -> void:
+	@warning_ignore("narrowing_conversion")
 	var date := Time.get_datetime_dict_from_unix_time(purchase.timestamp)
 	var date_string := "%02d-%02d-%02d" % [
 		date["month"], date["day"], date["year"]

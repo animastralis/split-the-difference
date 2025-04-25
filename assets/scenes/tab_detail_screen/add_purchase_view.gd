@@ -4,7 +4,7 @@ extends PanelContainer
 signal purchase_submitted(purchase: Purchase)
 signal purchase_canceled
 
-const PURCHASE_FIELDS_LINE := preload("res://assets/scenes/purchase_fields_line.tscn")
+const PURCHASE_FIELDS_LINE := preload("res://assets/scenes/tab_detail_screen/purchase_fields_line.tscn")
 
 var tab: Tab
 

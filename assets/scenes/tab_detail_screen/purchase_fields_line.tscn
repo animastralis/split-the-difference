@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cb4gh14bpv5tl"]
 
-[ext_resource type="Script" uid="uid://bf6xm0bocqhg4" path="res://assets/scenes/purchase_fields_line.gd" id="1_r5one"]
+[ext_resource type="Script" uid="uid://bf6xm0bocqhg4" path="res://assets/scenes/tab_detail_screen/purchase_fields_line.gd" id="1_r5one"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mckc1"]
 draw_center = false

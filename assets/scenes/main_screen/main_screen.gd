@@ -1,8 +1,8 @@
 class_name MainScreen
 extends Control
 
-const TAB_SUMMARY := preload("res://assets/scenes/tab_summary.tscn")
-const TAB_SUMMARY_LIST_SEPARATOR := preload("res://assets/scenes/tab_summary_list_separator.tscn")
+const TAB_SUMMARY := preload("res://assets/scenes/main_screen/tab_summary.tscn")
+const TAB_SUMMARY_LIST_SEPARATOR := preload("res://assets/shared/list_separator.tscn")
 
 @onready var anim := $AnimationPlayer
 @onready var add_tab_button := $TabListView/AddTab
@@ -36,9 +36,7 @@ func _load_tabs() -> void:
 		if child.name != "OpenTabs":
 			child.queue_free()
 	
-	# FIXME: Decouple
-	var num_tabs := len(DataManager.datastore.tabs)
-	for tab in DataManager.datastore.tabs:
+	for tab in DataManager.get_tabs():
 		var tab_summary: TabSummary = TAB_SUMMARY.instantiate()
 		tab_summary_list.add_child(tab_summary)
 		tab_summary.tab = tab
