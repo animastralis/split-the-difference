@@ -42,16 +42,18 @@ func save_datastore() -> void:
 
 
 func load_datastore() -> void:
-	var data: Datastore = ResourceLoader.load(DATASTORE_SAVE_PATH)
-	if data:
-		print("Loaded datstore from ", DATASTORE_SAVE_PATH)
-		datastore = data
-	else:
-		print("Failed to load datastore. Creating new datastore.")
-		datastore = Datastore.new()
-		var sample_tab := _load_sample_tab()
-		datastore.tabs.append(sample_tab)
-		save_datastore()
+	if FileAccess.file_exists(DATASTORE_SAVE_PATH):
+		var data: Datastore = ResourceLoader.load(DATASTORE_SAVE_PATH)
+		if data:
+			print("Loaded datstore from ", DATASTORE_SAVE_PATH)
+			datastore = data
+			return
+
+	print("Failed to load datastore. Creating new datastore.")
+	datastore = Datastore.new()
+	var sample_tab := _load_sample_tab()
+	datastore.tabs.append(sample_tab)
+	save_datastore()
 
 
 func add_tab(tab_name: String, member_names: Array[String]) -> void:

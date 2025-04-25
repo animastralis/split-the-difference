@@ -29,6 +29,7 @@ func init(tab_: Tab) -> void:
 		var line := PURCHASE_FIELDS_LINE.instantiate()
 		input_fields.add_child(line)
 		line.init(person)
+	reset(tab)
 
 
 func _on_cancel_button_pressed() -> void:
@@ -65,6 +66,7 @@ func _on_autofill_button_pressed() -> void:
 
 
 func reset(tab_: Tab) -> void:
+	tab = tab_
 	for line in input_fields.get_children():
 		line.clear()
 	
