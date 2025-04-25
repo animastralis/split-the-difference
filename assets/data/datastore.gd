@@ -4,4 +4,4 @@
 class_name Datastore
 extends Resource
 
-@export var tab_data: Array[Tab] = []
+@export var tabs: Array[Tab] = []

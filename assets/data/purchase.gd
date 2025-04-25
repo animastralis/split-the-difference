@@ -3,7 +3,7 @@ class_name Purchase
 extends Resource
 
 ## Unix integer timestamp
-var timestamp: int
+var timestamp: float
 
 ## Person who paid for the Purchase.
 var purchaser: Person
@@ -11,8 +11,8 @@ var purchaser: Person
 ## Total cost of Purchase's Orders.
 var cost: float
 
-## List of individual Persons' Orders.
-var orders: Array[Order]
+## Dictionary of individual Persons' Orders.
+var orders: Dictionary[String, Order]
 
 
 ## An individual Person's purchased item.

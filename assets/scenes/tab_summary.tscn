@@ -6,12 +6,16 @@
 theme_override_constants/separation = 64
 script = ExtResource("1_efo2s")
 
-[node name="TabName" type="Label" parent="."]
+[node name="TabName" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.341176, 0.45098, 0.6, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.286275, 0.345098, 0.403922, 1)
 theme_override_font_sizes/font_size = 72
 text = "Coffee"
+flat = true
 
 [node name="NextToPay" type="Label" parent="."]
 layout_mode = 2

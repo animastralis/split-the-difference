@@ -32,13 +32,22 @@ func _on_discard_button_pressed() -> void:
 
 func _on_submit_button_pressed() -> void:
 	var tab_name: String = tab_name_field.text
-	var member_names: Array[String] = []
+	if tab_name == "":
+		tab_discarded.emit()
+		return
 	
+	var member_names: Array[String] = []
 	for child in person_field_list.get_children():
 		# Ignore nodes that aren't a "field" (aka add_person_field button)
 		if child.is_in_group("fields"):
 			var person_field := child as PersonField
-			member_names.append(person_field.get_person_name())
+			var person_name: String = person_field.get_person_name()
+			if person_name != "":
+				member_names.append(person_field.get_person_name())
+	
+	if len(member_names) == 0:
+		tab_discarded.emit()
+		return
 	
 	DataManager.add_tab(tab_name, member_names)
 	tab_submitted.emit()

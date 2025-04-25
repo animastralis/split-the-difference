@@ -9,3 +9,6 @@ extends Resource
 
 ## History of Purchases made on this Tab.
 @export var purchases: Array[Purchase]
+
+## The person most indebted to others on this Tab.
+var next_purchaser: Person

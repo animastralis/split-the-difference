@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb4gh14bpv5tl"]
+[gd_scene load_steps=4 format=3 uid="uid://cb4gh14bpv5tl"]
+
+[ext_resource type="Script" uid="uid://bf6xm0bocqhg4" path="res://assets/scenes/purchase_fields_line.gd" id="1_r5one"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mckc1"]
 draw_center = false
@@ -11,6 +13,7 @@ border_width_bottom = 2
 border_color = Color(0.286275, 0.345098, 0.403922, 1)
 
 [node name="PurchaseFieldsLine" type="HBoxContainer"]
+script = ExtResource("1_r5one")
 
 [node name="PersonName" type="Label" parent="."]
 layout_mode = 2

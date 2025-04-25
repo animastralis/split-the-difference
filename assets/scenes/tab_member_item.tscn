@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://dk7f4i4b7crvk"]
+[gd_scene load_steps=2 format=3 uid="uid://dk7f4i4b7crvk"]
+
+[ext_resource type="Script" uid="uid://cuml83ar0p4aw" path="res://assets/scenes/tab_member_item.gd" id="1_snhla"]
 
 [node name="TabMemberItem" type="HBoxContainer"]
+script = ExtResource("1_snhla")
 
 [node name="MemberName" type="Label" parent="."]
 layout_mode = 2

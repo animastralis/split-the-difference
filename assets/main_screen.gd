@@ -1,3 +1,4 @@
+class_name MainScreen
 extends Control
 
 const TAB_SUMMARY := preload("res://assets/scenes/tab_summary.tscn")
@@ -13,6 +14,7 @@ func _ready() -> void:
 	add_tab_button.pressed.connect(_on_add_tab_button_pressed)
 	add_tab_view.tab_submitted.connect(_on_tab_view_tab_submitted)
 	add_tab_view.tab_discarded.connect(_on_tab_view_tab_discarded)
+	_load_tabs()
 
 
 func _on_add_tab_button_pressed() -> void:
@@ -34,9 +36,9 @@ func _load_tabs() -> void:
 		child.queue_free()
 	
 	# FIXME: Decouple
-	var num_tabs := len(DataManager.datastore.tab_data)
+	var num_tabs := len(DataManager.datastore.tabs)
 	var counter := 0
-	for tab in DataManager.datastore.tab_data:
+	for tab in DataManager.datastore.tabs:
 		var tab_summary: TabSummary = TAB_SUMMARY.instantiate()
 		tab_summary_list.add_child(tab_summary)
 		tab_summary.tab = tab
