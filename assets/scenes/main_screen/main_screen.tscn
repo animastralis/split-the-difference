@@ -248,6 +248,7 @@ theme_override_constants/margin_right = 256
 
 [node name="TabName" type="LineEdit" parent="AddTabView/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme_override_colors/caret_color = Color(0.203922, 0.223529, 0.25098, 1)
 theme_override_colors/font_placeholder_color = Color(0.595154, 0.595154, 0.595154, 1)
 theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
 theme_override_font_sizes/font_size = 76
@@ -255,6 +256,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_06ig3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_06ig3")
 placeholder_text = "New Tab"
 max_length = 64
+caret_blink = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="AddTabView/MarginContainer/VBoxContainer"]
 layout_mode = 2

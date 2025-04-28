@@ -40,6 +40,7 @@ text = "$"
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_stretch_ratio = 2.0
+theme_override_colors/caret_color = Color(0.203922, 0.223529, 0.25098, 1)
 theme_override_colors/font_placeholder_color = Color(0.596078, 0.596078, 0.596078, 1)
 theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
 theme_override_font_sizes/font_size = 48
@@ -47,14 +48,17 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_mckc1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mckc1")
 placeholder_text = "0.00"
 virtual_keyboard_type = 3
+caret_blink = true
 
 [node name="OrderName" type="LineEdit" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+theme_override_colors/caret_color = Color(0.203922, 0.223529, 0.25098, 1)
 theme_override_colors/font_placeholder_color = Color(0.596078, 0.596078, 0.596078, 1)
 theme_override_colors/font_color = Color(0.203922, 0.223529, 0.25098, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_mckc1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmib0")
 placeholder_text = "Cappuccino"
+caret_blink = true
